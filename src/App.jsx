@@ -323,34 +323,110 @@ const MedicalServicesSection = () => {
 
 // ----- ABOUT US Extended -----
 const AboutUsExtended = () => {
-  const leftBullets = ["Post-Injury Rehabilitation", "Sports Physiotherapy", "Orthopedic Physiotherapy", "Neurological Therapy"];
-  const rightBullets = ["Manual Therapy & Exercise", "Pain Management Programs", "Home Visit Services", "Appointment & Consultation"];
-  return (
-    <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
-          <div>
-            <span className="text-emerald-600 font-bold uppercase text-xs sm:text-sm tracking-wide">About Us</span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-3 text-gray-900 leading-tight">Start Your Healthy Life Today With Us</h2>
-            <p className="text-gray-600 mt-4 sm:mt-5 text-base sm:text-lg leading-relaxed">
-              Our expert physiotherapists use advanced techniques and personalized care to relieve pain, restore movement, and help you recover faster for a healthier, active life.
+  const allBullets = [
+    "Post-Injury Rehabilitation",
+    "Manual Therapy & Exercise",
+    "Sports Physiotherapy",
+    "Pain Management Programs",
+    "Orthopedic Physiotherapy",
+    "Home Visit Services",
+    "Neurological Therapy",
+    "Appointment & Consultation"
+  ];
+
+  // Image URLs you provided
+  const aboutImages = [
+    "https://clinicmaster.dexignzone.com/tailwind/physiotherapy/images/about/img1.webp",
+    "https://clinicmaster.dexignzone.com/tailwind/physiotherapy/images/about/img2.webp",
+    "https://clinicmaster.dexignzone.com/tailwind/physiotherapy/images/about/img3.webp"
+  ];
+
+ return (
+    <section className="py-16 md:py-24 bg-[#f8fafe]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Column - Staggered Image Collage */}
+          <div className="relative w-full aspect-square max-w-[550px] mx-auto lg:mx-0">
+            {/* Main Large Image (Left) */}
+            <img
+              src={aboutImages[0]}
+              alt="Physiotherapy stretching"
+              className="absolute top-0 left-0 w-[62%] h-[80%] object-cover rounded-[2rem] shadow-sm"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "https://via.placeholder.com/400x500?text=Image+1";
+              }}
+            />
+            
+            {/* Top Right Smaller Image */}
+            <img
+              src={aboutImages[1]}
+              alt="Shoulder therapy"
+              className="absolute top-0 right-0 w-[34%] h-[36%] object-cover rounded-[1.5rem] shadow-sm"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "https://via.placeholder.com/200x200?text=Image+2";
+              }}
+            />
+            
+            {/* Bottom Right Overlapping Image (Cutout effect) */}
+            <img
+              src={aboutImages[2]}
+              alt="Spine consultation"
+              className="absolute bottom-[8%] right-0 w-[48%] h-[46%] object-cover rounded-[2rem] border-[12px] border-[#f8fafe] bg-[#f8fafe]"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "https://via.placeholder.com/300x300?text=Image+3";
+              }}
+            />
+          </div>
+
+          {/* Right Column - Text Content */}
+          <div className="max-w-2xl">
+            <span className="text-blue-600 italic font-medium text-base md:text-lg block mb-3">
+              About Us
+            </span>
+            
+            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-[#1f2937] leading-[1.2] mb-5">
+              Start Your Healthy<br className="hidden sm:block" /> Life Today With Us
+            </h2>
+            
+            <p className="text-gray-500 text-base md:text-lg leading-relaxed mb-8">
+              Our expert physiotherapists use advanced techniques and personalized
+              care to relieve pain, restore movement, and help you recover faster for a
+              healthier, active life.
             </p>
-            <div className="mt-6 sm:mt-8">
-              <button className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-5 sm:px-7 py-2 sm:py-3 rounded-full shadow transition text-sm sm:text-base">Read more →</button>
+
+            {/* Bullet Points - 2 Column Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mb-10">
+              {allBullets.map((item, i) => (
+                <div key={i} className="flex items-center gap-3 text-gray-700">
+                  <svg 
+                    viewBox="0 0 24 24" 
+                    className="w-[22px] h-[22px] text-blue-600 flex-shrink-0" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    strokeWidth="2" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="4" ry="4"></rect>
+                    <path d="M8 12l3 3 5-6"></path>
+                  </svg>
+                  <span className="font-medium text-[15px]">{item}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Read More Button */}
+            <div>
+              <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-8 py-3.5 rounded-full shadow-sm transition duration-300">
+                Read more
+              </button>
             </div>
           </div>
-          <div className="grid grid-cols-1 xs:grid-cols-2 gap-4 sm:gap-6">
-            <ul className="space-y-2 sm:space-y-3">
-              {leftBullets.map((item, i) => (
-                <li key={i} className="flex items-center gap-2 sm:gap-3 text-gray-700 text-sm sm:text-base"><i className="fas fa-check-circle text-emerald-500 text-sm sm:text-base"></i><span>{item}</span></li>
-              ))}
-            </ul>
-            <ul className="space-y-2 sm:space-y-3">
-              {rightBullets.map((item, i) => (
-                <li key={i} className="flex items-center gap-2 sm:gap-3 text-gray-700 text-sm sm:text-base"><i className="fas fa-check-circle text-emerald-500 text-sm sm:text-base"></i><span>{item}</span></li>
-              ))}
-            </ul>
-          </div>
+
         </div>
       </div>
     </section>
