@@ -575,7 +575,7 @@ const ServiceBanner = () => {
   return (
     <section className="bg-[#f8fafe] pt-16 md:pt-24 pb-12">
       <div className="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Top Text Section - Two Columns */}
         <div className="grid md:grid-cols-2 gap-6 md:gap-12 mb-10 items-center max-w-7xl mx-auto">
           <div>
@@ -595,7 +595,7 @@ const ServiceBanner = () => {
 
         {/* Video Section with Interactive Play Button */}
         <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[650px] overflow-hidden shadow-sm">
-          
+
           <video
             ref={videoRef}
             src="https://res.cloudinary.com/dfiyubngf/video/upload/v1777199277/samples/cld-sample-video.mp4"
@@ -607,10 +607,10 @@ const ServiceBanner = () => {
             onEnded={() => setIsPlaying(false)} // Video khatam ho toh button wapas layein
             className="w-full h-full object-cover object-top bg-gray-200"
           />
-          
+
           {/* Play Button Overlay - Video play hone par hide ho jayega */}
           {!isPlaying && (
-            <div 
+            <div
               className="absolute inset-0 flex items-center justify-center bg-black/5 cursor-pointer transition-colors duration-300 hover:bg-black/20"
               onClick={handlePlayClick}
             >
@@ -636,26 +636,134 @@ const ServiceBanner = () => {
   );
 };
 
+const TestimonialsSection = () => {
+  // Testimonial Data
+  const testimonials = [
+    {
+      name: "Kenneth Fong",
+      role: "Postgraduate Student",
+      text: "Lorem Ipsum has been the industry standard dummy text ever since the 1500s, Lorem Ipsum has been the industry standard dummy text ever since the 1500s industry standard dummy text ever since the 1500s,",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150"
+    },
+    {
+      name: "Jane Brown",
+      role: "Patient",
+      text: "Lorem Ipsum has been the industry standard dummy text ever since the 1500s, Lorem Ipsum has been the industry standard dummy text ever since the 1500s industry standard dummy text ever since the 1500s,",
+      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150"
+    },
+    {
+      name: "Kenneth Fong",
+      role: "Postgraduate Student",
+      text: "Lorem Ipsum has been the industry standard dummy text ever since the 1500s, Lorem Ipsum has been the industry standard dummy text ever since the 1500s industry standard dummy text ever since the 1500s,",
+      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150"
+    },
+    {
+      name: "Jane Brown",
+      role: "Patient",
+      text: "Lorem Ipsum has been the industry standard dummy text ever since the 1500s, Lorem Ipsum has been the industry standard dummy text ever since the 1500s industry standard dummy text ever since the 1500s,",
+      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150"
+    }
+  ];
+
+  return (
+    <section className="py-16 md:py-24 bg-[#f8fafe] overflow-hidden">
+      <div className="max-w-[90rem] mx-auto">
+
+        {/* Header */}
+        <div className="text-center mb-12 sm:mb-16 px-4">
+          <span className="text-blue-600 italic font-medium text-lg block mb-3">
+            Testimonials
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-[#1f2937] leading-[1.2]">
+            Patient Stories & <br className="hidden sm:block" />
+            Successes
+          </h2>
+        </div>
+
+        {/* Scrolling Cards Container */}
+        <div
+          className="flex gap-6 overflow-x-auto snap-x snap-mandatory px-4 sm:px-6 lg:px-8 pb-10 [&::-webkit-scrollbar]:hidden"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          {testimonials.map((item, index) => (
+            <div
+              key={index}
+              className="min-w-[85vw] sm:min-w-[380px] lg:min-w-[400px] bg-white rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 flex flex-col justify-between snap-center shadow-sm border border-gray-100/50"
+            >
+              {/* Top: Stars & Text */}
+              <div>
+                <div className="flex gap-1 mb-5">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 text-[#ffc107]" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-500 text-[15px] sm:text-base leading-relaxed mb-8">
+                  {item.text}
+                </p>
+              </div>
+
+              {/* Bottom: Profile & Play Button */}
+              <div className="pt-6 border-t border-gray-100 flex items-center justify-between mt-auto">
+                {/* Avatar & Name */}
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <img
+                    src={item.avatar}
+                    alt={item.name}
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover bg-gray-200"
+                  />
+                  <div>
+                    <h4 className="text-[#1f2937] font-semibold text-sm sm:text-[15px]">
+                      {item.name}
+                    </h4>
+                    <p className="text-gray-500 text-xs sm:text-sm mt-0.5">
+                      {item.role}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Blue Play Button */}
+                <button className="w-10 h-10 sm:w-12 sm:h-12 bg-[#1a56db] hover:bg-blue-700 rounded-full flex items-center justify-center transition-colors flex-shrink-0 shadow-md">
+                  <svg
+                    className="w-4 h-4 sm:w-5 sm:h-5 text-white ml-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </button>
+              </div>
+
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
 // ----- Why Choose Us -----
 const WhyChooseUsSection = () => {
   // Image mein sabhi cards par same blue checkmark hai, 
   // isliye maine alag-alag icons hata kar content update kar diya hai.
   const features = [
-    { 
-      title: "More Experience", 
-      desc: "We offer a wide range of health services to meet all your needs." 
+    {
+      title: "More Experience",
+      desc: "We offer a wide range of health services to meet all your needs."
     },
-    { 
-      title: "Seamless care", 
-      desc: "We offer a wide range of health services to meet all your needs." 
+    {
+      title: "Seamless care",
+      desc: "We offer a wide range of health services to meet all your needs."
     },
-    { 
-      title: "The right answers?", 
-      desc: "We offer a wide range of health services to meet all your needs." 
+    {
+      title: "The right answers?",
+      desc: "We offer a wide range of health services to meet all your needs."
     },
-    { 
-      title: "Unparalleled expertise", 
-      desc: "We offer a wide range of health services to meet all your needs." 
+    {
+      title: "Unparalleled expertise",
+      desc: "We offer a wide range of health services to meet all your needs."
     }
   ];
 
@@ -663,12 +771,12 @@ const WhyChooseUsSection = () => {
     <section className="py-16 md:py-24 bg-white">
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          
+
           {/* Left Column - Large Image */}
           <div className="w-full h-[500px] lg:h-[700px]">
-            <img 
-              src="https://clinicmaster.dexignzone.com/tailwind/physiotherapy/images/about/img4.webp" 
-              alt="Therapist helping patient" 
+            <img
+              src="https://clinicmaster.dexignzone.com/tailwind/physiotherapy/images/about/img4.webp"
+              alt="Therapist helping patient"
               className="w-full h-full object-cover rounded-[2rem] shadow-sm"
               // Agar image fail ho jaye toh placeholder
               onError={(e) => {
@@ -692,23 +800,23 @@ const WhyChooseUsSection = () => {
             {/* 2x2 Features Grid */}
             <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
               {features.map((f, i) => (
-                <div 
-                  key={i} 
+                <div
+                  key={i}
                   className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 text-center shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform duration-300"
                 >
                   {/* Blue Checkmark Circle */}
                   <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#1a56db] rounded-full flex items-center justify-center mx-auto mb-5 shadow-md">
-                    <svg 
-                      className="w-6 h-6 sm:w-7 sm:h-7 text-white" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor" 
+                    <svg
+                      className="w-6 h-6 sm:w-7 sm:h-7 text-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
                       strokeWidth="2.5"
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  
+
                   <h4 className="text-[#1f2937] text-lg sm:text-[19px] font-medium mb-3">
                     {f.title}
                   </h4>
@@ -753,20 +861,113 @@ const MeetDoctors = () => (
   </section>
 );
 
+
+
 // ----- Conditions We Treat -----
 const ConditionsTreat = () => {
-  const items = ["back, neck & Shoulder pain", "Hip And Knee pain", "How do i book my appointment ?", "What Should I Bring For My First Visit?", "Can i cancel my appointment"];
+  // 0 set kiya hai taaki page load par first item pehle se open rahe (image ki tarah)
+  const [openIndex, setOpenIndex] = useState(0);
+
+  // Data array jisme answers bhi shamil hain
+  const faqData = [
+    {
+      question: "back , neek & Shoulder pain",
+      answer: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its. The point of using Lorem Ipsum is that it has a more-or-less normal distribution"
+    },
+    {
+      question: "Hip And Knee pain",
+      answer: "Treatment options for hip and knee pain include physical therapy, targeted exercises, and personalized recovery plans to restore full mobility."
+    },
+    {
+      question: "How do i book my appointment ?",
+      answer: "You can easily book your appointment by calling our clinic, filling out the online form on our website, or visiting us directly."
+    },
+    {
+      question: "What Should I Bring For My First Visit?",
+      answer: "Please bring your medical history, any recent MRI/X-ray reports, comfortable clothing, and your identification documents."
+    },
+    {
+      question: "Can i cancel my appointment",
+      answer: "Yes, you can cancel or reschedule. We request a minimum of 24-hour notice so we can accommodate other patients who might need care."
+    },
+    {
+      question: "Do I Need a Referral to Visit?",
+      answer: "In most cases, a referral is not required to see our physiotherapists unless it is specifically mandated by your insurance provider."
+    }
+  ];
+
+  const toggleAccordion = (index) => {
+    // Agar same index pe click kiya toh close ho jayega, warna naya open hoga
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
-        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-10">Conditions we treat with excellent care</h2>
-        <div className="space-y-3 sm:space-y-4">
-          {items.map((item, i) => (
-            <div key={i} className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 shadow-sm border border-gray-100 flex justify-between items-center hover:bg-gray-100 transition">
-              <span className="font-medium text-gray-800 text-sm sm:text-base">{item}</span>
-              <i className="fas fa-chevron-right text-emerald-500 text-sm sm:text-base"></i>
+    <section className="py-16 md:py-24 bg-white">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+
+          {/* Left Column - Heading & Accordion */}
+          <div className="w-full">
+            <h2 className="text-4xl sm:text-5xl lg:text-[52px] font-bold text-[#1f2937] leading-[1.2] mb-10">
+              Conditions we treat with <br className="hidden md:block" /> excellent care
+            </h2>
+
+            {/* Accordion List */}
+            <div className="space-y-4">
+              {faqData.map((item, index) => {
+                const isOpen = openIndex === index;
+
+                return (
+                  <div key={index} className="flex flex-col">
+                    {/* Accordion Header (Question) */}
+                    <div
+                      onClick={() => toggleAccordion(index)}
+                      className={`w-full flex justify-between items-center p-5 rounded-2xl cursor-pointer transition-all duration-300 ${isOpen ? "bg-[#f8f9fc]" : "bg-[#f8fafe] hover:bg-[#f0f4f8]"
+                        }`}
+                    >
+                      <span className="font-medium text-[#1f2937] text-base md:text-[17px]">
+                        {item.question}
+                      </span>
+
+                      {/* Chevron Icon */}
+                      <svg
+                        className={`w-5 h-5 text-gray-500 transition-transform duration-300 ${isOpen ? "rotate-90" : ""
+                          }`}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+
+                    {/* Accordion Content (Answer) */}
+                    {isOpen && (
+                      <div className="mt-2 p-6 bg-[#fdfdfd] border border-gray-100 rounded-2xl shadow-sm animate-fadeIn">
+                        <p className="text-gray-500 text-sm md:text-[15px] leading-relaxed">
+                          {item.answer}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
-          ))}
+          </div>
+
+          {/* Right Column - Large Anatomy Image */}
+          <div className="w-full h-[500px] lg:h-[800px] sticky top-10">
+            <img
+              // Yahan maine ek Unsplash placeholder lagaya hai jo similar medical feel deta hai. 
+              // Aap ise apni body/anatomy wali image ke source (src) se replace kar lena.
+              src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=1000"
+              alt="Human anatomy back muscles"
+              className="w-full h-full object-cover rounded-[2rem] shadow-md bg-gray-200"
+            />
+          </div>
+
         </div>
       </div>
     </section>
@@ -774,111 +975,262 @@ const ConditionsTreat = () => {
 };
 
 // ----- Blog Section -----
-const BlogSection = () => (
-  <section className="py-12 sm:py-16 md:py-20 bg-white">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Your Health, Our Knowledge</h2>
-      <div className="w-16 h-0.5 bg-emerald-500 mx-auto my-3 sm:my-4"></div>
-      <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mt-8 sm:mt-12">
-        <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg bg-gray-50">
-          <div className="h-36 sm:h-48 bg-emerald-200 flex items-center justify-center">
-            <i className="fas fa-newspaper text-4xl sm:text-5xl text-emerald-700"></i>
-          </div>
-          <div className="p-5 sm:p-6">
-            <p className="text-emerald-600 text-xs sm:text-sm font-semibold">OCT 27, 2025 - ALEX</p>
-            <h4 className="text-base sm:text-lg md:text-xl font-bold mt-2">Expert Insights on Medical Physiotherapy Wellness</h4>
-          </div>
+const BlogSection = () => {
+  // Demo data for the blog cards
+  const blogPosts = [
+    {
+      dateAuthor: "OCT 27, 2025 – ALEX",
+      title: "Expert Insights on Medical Physiotherapy Wellness",
+      // Unsplash placeholder matching the first image
+      img: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800" 
+    },
+    {
+      dateAuthor: "OCT 27, 2025 – ALEX",
+      title: "Expert Insights on Medical Physiotherapy Wellness",
+      // Unsplash placeholder matching the second image
+      img: "https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=800"
+    }
+  ];
+
+  return (
+    <section className="py-16 md:py-24 bg-[#f8fafe]">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Header Section */}
+        <div className="text-center mb-12 sm:mb-16">
+          <span className="text-blue-600 italic font-medium text-base md:text-lg block mb-3">
+            Blog
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-[#1f2937] leading-[1.2]">
+            Your Health, Our Knowledge
+          </h2>
         </div>
-        <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg bg-gray-50">
-          <div className="h-36 sm:h-48 bg-teal-200 flex items-center justify-center">
-            <i className="fas fa-brain text-4xl sm:text-5xl text-teal-700"></i>
-          </div>
-          <div className="p-5 sm:p-6">
-            <p className="text-emerald-600 text-xs sm:text-sm font-semibold">OCT 27, 2025 - ALEX</p>
-            <h4 className="text-base sm:text-lg md:text-xl font-bold mt-2">Expert Insights on Medical Physiotherapy Wellness</h4>
-          </div>
+
+        {/* Blog Cards Grid */}
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
+          {blogPosts.map((post, index) => (
+            <div 
+              key={index} 
+              className="relative w-full h-[350px] sm:h-[400px] lg:h-[450px] rounded-[2rem] overflow-hidden group cursor-pointer shadow-md"
+            >
+              {/* Background Image */}
+              <img 
+                src={post.img} 
+                alt={post.title} 
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              
+              {/* Bottom Dark Gradient Overlay - Text ko readable banane ke liye */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-90 transition-opacity duration-300"></div>
+
+              {/* Date & Author Blue Badge (Top Left) */}
+              <div className="absolute top-6 left-6">
+                <span className="bg-[#1a56db] text-white text-[13px] font-medium px-4 py-1.5 rounded-full shadow-sm">
+                  {post.dateAuthor}
+                </span>
+              </div>
+
+              {/* Blog Title (Bottom) */}
+              <div className="absolute bottom-0 left-0 w-full p-6 sm:p-8 md:p-10">
+                <h4 className="text-white text-2xl sm:text-[28px] lg:text-[32px] font-bold leading-[1.3] md:pr-10">
+                  {post.title}
+                </h4>
+              </div>
+            </div>
+          ))}
         </div>
+
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+}
 
 // ----- Muscle Spasm CTA -----
-const MuscleSpasmCta = () => (
-  <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-emerald-700 to-emerald-900 text-white text-center">
-    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Delivering effective <br />muscle spasm treatment</h2>
-    <button className="bg-white text-emerald-800 font-bold px-6 sm:px-8 py-2 sm:py-3 rounded-full shadow-xl hover:scale-105 transition text-sm sm:text-base">Book Appointment →</button>
-  </section>
-);
+const MuscleSpasmCta = () => {
+  return (
+    <section className="relative w-full h-[400px] sm:h-[500px] lg:h-[600px] flex items-center justify-center overflow-hidden">
+      
+      {/* Background Image */}
+      <img
+        // Yahan aap apni original image ka URL daal sakte hain. 
+        // Abhi ke liye maine ek high-quality Unsplash placeholder use kiya hai.
+        src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1600"
+        alt="Physiotherapists looking at camera"
+        className="absolute inset-0 w-full h-full object-cover object-top"
+      />
+      
+      {/* Subtle Dark Overlay - Isse white text hamesha clearly padhne mein aayega */}
+      <div className="absolute inset-0 bg-black/20 transition-opacity duration-300"></div>
+
+      {/* Center Content */}
+      <div className="relative z-10 text-center px-4 w-full max-w-4xl mx-auto mt-10">
+        
+        {/* Heading */}
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-bold text-white leading-[1.2] mb-8 drop-shadow-lg">
+          Delivering effective <br />
+          muscle spasm <br />
+          treatment
+        </h2>
+        
+        {/* Blue Button */}
+        <button className="bg-[#1a56db] hover:bg-blue-700 text-white font-medium text-base px-8 py-3.5 rounded-full shadow-lg transition-transform duration-300 hover:-translate-y-1">
+          Book Appointment
+        </button>
+        
+      </div>
+      
+    </section>
+  );
+};
 
 // ----- Footer -----
-const Footer = () => (
-  <footer className="bg-gray-900 text-gray-300 pt-12 sm:pt-16 pb-6 sm:pb-8">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-10">
-      <div className="col-span-1 sm:col-span-2 lg:col-span-1">
-        <div className="flex items-center gap-2 text-white text-xl sm:text-2xl font-bold">
-          <i className="fas fa-hand-holding-heart text-emerald-500"></i>
-          <span>Clinic Master</span>
+const Footer = () => {
+  return (
+    <footer className="bg-white pt-16 md:pt-24 pb-8 border-t border-gray-100 overflow-hidden">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 relative">
+        
+        {/* Right Side Anatomy Background Image */}
+        {/* Absolute position taaki ye footer content ke piche/right side par fix rahe */}
+        <div className="absolute right-0 top-0 h-full opacity-40 pointer-events-none hidden lg:block">
+          <img 
+            src="https://clinicmaster.dexignzone.com/tailwind/physiotherapy/images/bone.png" 
+            alt="Spine Anatomy" 
+            className="h-[80%] object-contain mix-blend-multiply drop-shadow-sm translate-x-10 mt-10"
+            onError={(e) => {
+                e.target.onerror = null;
+                // Fallback image in case the URL breaks
+                e.target.src = "https://images.unsplash.com/photo-1530213786676-4189f1756920?auto=format&fit=crop&q=80&w=200&h=800";
+            }}
+          />
         </div>
-        <p className="text-xs sm:text-sm mt-3">Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam.</p>
-        <div className="flex gap-3 sm:gap-4 mt-4 text-white text-lg sm:text-xl">
-          <i className="fab fa-twitter hover:text-emerald-400 cursor-pointer"></i>
-          <i className="fab fa-linkedin-in hover:text-emerald-400 cursor-pointer"></i>
-          <i className="fab fa-instagram hover:text-emerald-400 cursor-pointer"></i>
+
+        {/* Top Grid Area */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-16 relative z-10">
+          
+          {/* Logo & Description (Left Column - takes 4 cols) */}
+          <div className="lg:col-span-4">
+            <div className="flex items-center gap-3 mb-5">
+              {/* Blue Cross Logo SVG */}
+              <svg className="w-10 h-10 text-[#1a56db]" viewBox="0 0 40 40" fill="currentColor">
+                <path d="M20 0C8.954 0 0 8.954 0 20s8.954 20 20 20 20-8.954 20-20S31.046 0 20 0zm8.3 22.5h-5.8v5.8c0 1.38-1.12 2.5-2.5 2.5s-2.5-1.12-2.5-2.5v-5.8H11.7c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5h5.8v-5.8c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5v5.8h5.8c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5z" />
+              </svg>
+              <div className="leading-tight">
+                <span className="text-[#1a56db] text-2xl font-bold block">Clinic</span>
+                <span className="text-gray-500 text-xl font-medium block">Master</span>
+              </div>
+            </div>
+            
+            <p className="text-gray-500 text-sm leading-relaxed mb-6 max-w-xs">
+              Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam
+            </p>
+            
+            {/* Social Icons */}
+            <div className="flex gap-4 text-gray-500">
+              <a href="#" className="hover:text-blue-600 transition-colors"><i className="fab fa-facebook-f"></i></a>
+              <a href="#" className="hover:text-blue-600 transition-colors"><i className="fab fa-twitter"></i></a> {/* Assuming X logo is matched via fa-twitter or custom SVG */}
+              <a href="#" className="hover:text-blue-600 transition-colors"><i className="fab fa-instagram"></i></a>
+              <a href="#" className="hover:text-blue-600 transition-colors"><i className="fab fa-linkedin-in"></i></a>
+              <a href="#" className="hover:text-blue-600 transition-colors"><i className="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          {/* Links Sections (Center - takes 2 cols each) */}
+          <div className="lg:col-span-2">
+            <h4 className="text-[#1f2937] font-semibold mb-6 text-lg">Product</h4>
+            <ul className="space-y-4 text-gray-400 text-[15px]">
+              <li><a href="#" className="hover:text-[#1a56db] transition-colors">Features</a></li>
+              <li><a href="#" className="hover:text-[#1a56db] transition-colors">Pricing</a></li>
+              <li><a href="#" className="hover:text-[#1a56db] transition-colors">Case studies</a></li>
+              <li><a href="#" className="hover:text-[#1a56db] transition-colors">Reviews</a></li>
+              <li><a href="#" className="hover:text-[#1a56db] transition-colors">Updates</a></li>
+            </ul>
+          </div>
+
+          <div className="lg:col-span-2">
+            <h4 className="text-[#1f2937] font-semibold mb-6 text-lg">Company</h4>
+            <ul className="space-y-4 text-gray-400 text-[15px]">
+              <li><a href="#" className="hover:text-[#1a56db] transition-colors">About</a></li>
+              <li><a href="#" className="hover:text-[#1a56db] transition-colors">Contact us</a></li>
+              <li><a href="#" className="hover:text-[#1a56db] transition-colors">Careers</a></li>
+              <li><a href="#" className="hover:text-[#1a56db] transition-colors">Culture</a></li>
+              <li><a href="#" className="hover:text-[#1a56db] transition-colors">Blog</a></li>
+            </ul>
+          </div>
+
+          <div className="lg:col-span-2">
+            <h4 className="text-[#1f2937] font-semibold mb-6 text-lg">Support</h4>
+            <ul className="space-y-4 text-gray-400 text-[15px]">
+              <li><a href="#" className="hover:text-[#1a56db] transition-colors">Getting started</a></li>
+              <li><a href="#" className="hover:text-[#1a56db] transition-colors">Help center</a></li>
+              <li><a href="#" className="hover:text-[#1a56db] transition-colors">Server status</a></li>
+              <li><a href="#" className="hover:text-[#1a56db] transition-colors">Report a bug</a></li>
+              <li><a href="#" className="hover:text-[#1a56db] transition-colors">Chat support</a></li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <div>
-        <h4 className="text-white font-semibold mb-3 text-base sm:text-lg">Product</h4>
-        <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm">
-          <li className="hover:text-white cursor-pointer">Features</li>
-          <li className="hover:text-white cursor-pointer">Pricing</li>
-          <li className="hover:text-white cursor-pointer">Case studies</li>
-          <li className="hover:text-white cursor-pointer">Reviews</li>
-          <li className="hover:text-white cursor-pointer">Updates</li>
-        </ul>
-      </div>
-      <div>
-        <h4 className="text-white font-semibold mb-3 text-base sm:text-lg">Company</h4>
-        <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm">
-          <li className="hover:text-white cursor-pointer">About</li>
-          <li className="hover:text-white cursor-pointer">Contact us</li>
-          <li className="hover:text-white cursor-pointer">Careers</li>
-          <li className="hover:text-white cursor-pointer">Culture</li>
-          <li className="hover:text-white cursor-pointer">Blog</li>
-        </ul>
-      </div>
-      <div>
-        <h4 className="text-white font-semibold mb-3 text-base sm:text-lg">Support</h4>
-        <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm">
-          <li className="hover:text-white cursor-pointer">Getting started</li>
-          <li className="hover:text-white cursor-pointer">Help center</li>
-          <li className="hover:text-white cursor-pointer">Server status</li>
-          <li className="hover:text-white cursor-pointer">Report a bug</li>
-          <li className="hover:text-white cursor-pointer">Chat support</li>
-        </ul>
-      </div>
-      <div>
-        <h4 className="text-white font-semibold mb-3 text-base sm:text-lg">Important Updates</h4>
-        <p className="text-xs sm:text-sm">Get our latest contents right into your inbox</p>
-        <div className="flex mt-3 flex-wrap gap-2">
-          <input type="email" placeholder="Enter your email" className="px-3 sm:px-4 py-2 rounded-full text-gray-800 w-full text-xs sm:text-sm" />
-          <button className="bg-emerald-600 px-3 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap">Subscribe Now</button>
+
+        {/* Newsletter Section */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between py-10 border-b border-gray-200 relative z-10 gap-6">
+          <div>
+            <h3 className="text-[#1f2937] text-2xl font-bold mb-2"></h3>
+            <p className="text-gray-500 text-sm"></p>
+          </div>
+          
+          <div className="w-full md:w-auto">
+            {/* Unified Input + Button styling */}
+            <div className="flex items-center bg-[#f4f7fa] rounded-full p-1.5 w-full md:w-[400px]">
+              <input 
+                type="email" 
+                placeholder="Enter your email address" 
+                className="bg-transparent outline-none px-4 py-2 w-full text-gray-700 text-sm placeholder-gray-400"
+              />
+              <button className="bg-[#1a56db] hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-sm font-medium transition-colors whitespace-nowrap">
+                Subscribe Now
+              </button>
+            </div>
+          </div>
         </div>
+
+        {/* Bottom Copyright Section */}
+        <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 relative z-10">
+          <p className="text-gray-500 text-sm">
+            © Copyright 2026 By <span className="text-[#1a56db]">DexignZone</span>. All Rights Reserved.
+          </p>
+          
+          {/* Google Ratings Badge */}
+          <div className="flex items-center bg-[#f4f7fa] px-4 py-2 rounded-full gap-2">
+            <span className="font-bold text-lg leading-none mr-1">
+              <span className="text-[#4285F4]">G</span>
+            </span>
+            <div className="flex gap-1 text-[#FFC107] text-xs">
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+            </div>
+            <span className="text-gray-700 font-bold text-sm ml-1">(4.8)</span>
+            <span className="text-gray-400 text-xs ml-1">12k+ ratings on google</span>
+          </div>
+        </div>
+
       </div>
-    </div>
-    <div className="border-t border-gray-800 mt-8 sm:mt-12 pt-6 flex flex-wrap justify-between items-center text-xs sm:text-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 gap-3">
-      <span>© Copyright 2026 By DexignZone. All Rights Reserved.</span>
-      <div className="flex items-center gap-1">
-        <i className="fas fa-star text-yellow-400 text-xs sm:text-sm"></i>
-        <i className="fas fa-star text-yellow-400 text-xs sm:text-sm"></i>
-        <i className="fas fa-star text-yellow-400 text-xs sm:text-sm"></i>
-        <i className="fas fa-star text-yellow-400 text-xs sm:text-sm"></i>
-        <i className="fas fa-star-half-alt text-yellow-400 text-xs sm:text-sm"></i>
-        <span className="text-gray-400 ml-2 text-xs sm:text-sm">(4.8) 12k+ ratings on google</span>
+
+      {/* Back to Top Button */}
+      <div className="fixed bottom-8 right-8 z-50">
+        <button 
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="w-12 h-12 bg-[#1f2937] hover:bg-black text-white rounded-full flex items-center justify-center shadow-lg transition-transform hover:-translate-y-1"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+        </button>
       </div>
-    </div>
-  </footer>
-);
+
+    </footer>
+  );
+};
 
 // ----- MAIN APP COMPONENT -----
 const App = () => {
