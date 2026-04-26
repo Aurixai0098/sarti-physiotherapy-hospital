@@ -1,4 +1,4 @@
-import React, { useState, useEffect , useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 // Hero images set for dynamic background
 const heroImageSet = [
@@ -55,7 +55,7 @@ const Navbar = ({ isScrolled }) => {
             {/* Desktop Navigation - Hidden on mobile */}
             <div className="hidden md:flex items-center space-x-4 lg:space-x-7 bg-white p-2 md:p-1 rounded-full px-3 md:px-2 md:pr-4 font-medium  ">
               {['Home', 'Pages', 'Services', 'Blogs', 'Contact Us'].map(item => (
-                <a key={item} href="#" className={`${isScrolled ? 'text-gray-700 hover:text-emerald-600' : 'text-black hover:text-emerald-600'} transition text-sm lg:text-base whitespace-nowrap ${item === "Home" ? 'bg-green-400  rounded-full p-4 px-6 text-white':''}`  }>
+                <a key={item} href="#" className={`${isScrolled ? 'text-gray-700 hover:text-emerald-600' : 'text-black hover:text-emerald-600'} transition text-sm lg:text-base whitespace-nowrap ${item === "Home" ? 'bg-green-400  rounded-full p-4 px-6 text-white' : ''}`}>
                   {item}
                 </a>
               ))}
@@ -341,11 +341,11 @@ const AboutUsExtended = () => {
     "https://clinicmaster.dexignzone.com/tailwind/physiotherapy/images/about/img3.webp"
   ];
 
- return (
+  return (
     <section className="py-16 md:py-24 bg-[#f8fafe]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          
+
           {/* Left Column - Staggered Image Collage */}
           <div className="relative w-full aspect-square max-w-[550px] mx-auto lg:mx-0">
             {/* Main Large Image (Left) */}
@@ -358,7 +358,7 @@ const AboutUsExtended = () => {
                 e.target.src = "https://via.placeholder.com/400x500?text=Image+1";
               }}
             />
-            
+
             {/* Top Right Smaller Image */}
             <img
               src={aboutImages[1]}
@@ -369,7 +369,7 @@ const AboutUsExtended = () => {
                 e.target.src = "https://via.placeholder.com/200x200?text=Image+2";
               }}
             />
-            
+
             {/* Bottom Right Overlapping Image (Cutout effect) */}
             <img
               src={aboutImages[2]}
@@ -387,11 +387,11 @@ const AboutUsExtended = () => {
             <span className="text-blue-600 italic font-medium text-base md:text-lg block mb-3">
               About Us
             </span>
-            
+
             <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-[#1f2937] leading-[1.2] mb-5">
               Start Your Healthy<br className="hidden sm:block" /> Life Today With Us
             </h2>
-            
+
             <p className="text-gray-500 text-base md:text-lg leading-relaxed mb-8">
               Our expert physiotherapists use advanced techniques and personalized
               care to relieve pain, restore movement, and help you recover faster for a
@@ -402,13 +402,13 @@ const AboutUsExtended = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mb-10">
               {allBullets.map((item, i) => (
                 <div key={i} className="flex items-center gap-3 text-gray-700">
-                  <svg 
-                    viewBox="0 0 24 24" 
-                    className="w-[22px] h-[22px] text-blue-600 flex-shrink-0" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="w-[22px] h-[22px] text-blue-600 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
                     strokeLinejoin="round"
                   >
                     <rect x="3" y="3" width="18" height="18" rx="4" ry="4"></rect>
@@ -439,39 +439,39 @@ const PhysioServices = () => {
 
   // Added image placeholders since the original code didn't have image URLs for this section
   const servicesList = [
-    { 
-      name: "Manual Therapy", 
-      desc: "Consectetur adipiscing.", 
+    {
+      name: "Manual Therapy",
+      desc: "Consectetur adipiscing.",
       num: "01.",
       img: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=600"
     },
-    { 
-      name: "Acupuncture", 
-      desc: "Consectetur adipiscing.", 
+    {
+      name: "Acupuncture",
+      desc: "Consectetur adipiscing.",
       num: "02.",
       img: "https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&q=80&w=600"
     },
-    { 
-      name: "Pilates", 
-      desc: "Consectetur adipiscing.", 
+    {
+      name: "Pilates",
+      desc: "Consectetur adipiscing.",
       num: "03.",
       img: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=600"
     },
-    { 
-      name: "Lymphtic Drainage", 
-      desc: "Consectetur adipiscing.", 
+    {
+      name: "Lymphtic Drainage",
+      desc: "Consectetur adipiscing.",
       num: "04.",
       img: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=600"
     },
-    { 
-      name: "Sports Therapy", 
-      desc: "Consectetur adipiscing.", 
+    {
+      name: "Sports Therapy",
+      desc: "Consectetur adipiscing.",
       num: "05.",
       img: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=600"
     },
-    { 
-      name: "Neurology Therapy", 
-      desc: "Consectetur adipiscing.", 
+    {
+      name: "Neurology Therapy",
+      desc: "Consectetur adipiscing.",
       num: "06.",
       img: "https://images.unsplash.com/photo-1588286840104-8957b019727f?auto=format&fit=crop&q=80&w=600"
     }
@@ -482,7 +482,7 @@ const PhysioServices = () => {
     const interval = setInterval(() => {
       if (scrollContainerRef.current) {
         const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
-        
+
         // If we reach the end of the scroll, instantly jump back to start, otherwise scroll by 1 card
         if (scrollLeft + clientWidth >= scrollWidth - 10) {
           scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
@@ -500,36 +500,36 @@ const PhysioServices = () => {
   return (
     <section className="py-16 md:py-24 bg-white overflow-hidden">
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Header Section */}
         <div className="text-center mb-12 sm:mb-16">
           <span className="text-blue-600 italic font-medium text-lg block mb-3">
             Services
           </span>
           <h2 className="text-4xl sm:text-5xl lg:text-[56px] font-bold text-[#333333] leading-[1.2]">
-            Our Expert <br className="hidden sm:block" /> 
+            Our Expert <br className="hidden sm:block" />
             Physiotherapy Services
           </h2>
         </div>
 
         {/* Carousel / Slider Container */}
-        <div 
+        <div
           ref={scrollContainerRef}
           className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-8 [&::-webkit-scrollbar]:hidden"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {servicesList.map((srv, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="relative min-w-[85vw] sm:min-w-[45vw] lg:min-w-[320px] xl:min-w-[350px] h-[450px] rounded-[2rem] overflow-hidden flex-shrink-0 snap-start group cursor-pointer"
             >
               {/* Background Image */}
-              <img 
-                src={srv.img} 
-                alt={srv.name} 
+              <img
+                src={srv.img}
+                alt={srv.name}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              
+
               {/* Dark Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/80 transition-opacity duration-300"></div>
 
@@ -553,48 +553,174 @@ const PhysioServices = () => {
             </div>
           ))}
         </div>
-        
+
       </div>
     </section>
   );
 };
 
 // ----- Banner: Providing excellent service -----
-const ServiceBanner = () => (
-  <section className="bg-gradient-to-r from-emerald-700 to-teal-600 text-white py-12 sm:py-16 md:py-20">
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-5">Providing excellent service to our patients</h2>
-      <p className="text-emerald-100 text-sm sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed px-4">
-        One-On-One Treatments Without The Use Of Gym Equipment, Thus Fully Utilizing The Hands On Time With The Therapist And Ensuring Greater Homecare Outcomes.
-      </p>
-      <button className="mt-6 sm:mt-9 bg-white text-emerald-800 font-bold px-6 sm:px-8 py-2 sm:py-3 rounded-full shadow-lg hover:bg-gray-100 transition transform hover:scale-105 text-sm sm:text-base">Learn More →</button>
-    </div>
-  </section>
-);
+const ServiceBanner = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef(null);
+
+  // Play button click handle karne ke liye function
+  const handlePlayClick = () => {
+    setIsPlaying(true);
+    if (videoRef.current) {
+      videoRef.current.play();
+    }
+  };
+
+  return (
+    <section className="bg-[#f8fafe] pt-16 md:pt-24 pb-12">
+      <div className="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Top Text Section - Two Columns */}
+        <div className="grid md:grid-cols-2 gap-6 md:gap-12 mb-10 items-center max-w-7xl mx-auto">
+          <div>
+            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-[#1f2937] leading-[1.2]">
+              Providing excellent <br className="hidden sm:block" />
+              service to our patients
+            </h2>
+          </div>
+          <div>
+            <p className="text-gray-500 text-base md:text-lg leading-relaxed md:max-w-xl">
+              One-On-One Treatments Without The Use Of Gym Equipment,
+              Thus Fully Utilizing The Hands On Time With The Therapist And
+              Ensuring Greater Homecare Outcomes.
+            </p>
+          </div>
+        </div>
+
+        {/* Video Section with Interactive Play Button */}
+        <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[650px] overflow-hidden shadow-sm">
+          
+          <video
+            ref={videoRef}
+            src="https://res.cloudinary.com/dfiyubngf/video/upload/v1777199277/samples/cld-sample-video.mp4"
+            /* Poster image video load hone se pehle dikhegi */
+            poster="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=1600"
+            controls={isPlaying} // Controls sirf tab dikhenge jab video play hogi
+            playsInline
+            onPause={() => setIsPlaying(false)} // User pause kare toh button wapas layein
+            onEnded={() => setIsPlaying(false)} // Video khatam ho toh button wapas layein
+            className="w-full h-full object-cover object-top bg-gray-200"
+          />
+          
+          {/* Play Button Overlay - Video play hone par hide ho jayega */}
+          {!isPlaying && (
+            <div 
+              className="absolute inset-0 flex items-center justify-center bg-black/5 cursor-pointer transition-colors duration-300 hover:bg-black/20"
+              onClick={handlePlayClick}
+            >
+              {/* Halo ring effect */}
+              <div className="bg-white/30 p-3 sm:p-4 rounded-full animate-pulse flex items-center justify-center">
+                {/* Actual Play Button */}
+                <button className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full flex items-center justify-center shadow-xl hover:scale-105 transition-transform duration-300">
+                  <svg
+                    className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 ml-1 sm:ml-2"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          )}
+
+        </div>
+      </div>
+    </section>
+  );
+};
 
 // ----- Why Choose Us -----
 const WhyChooseUsSection = () => {
+  // Image mein sabhi cards par same blue checkmark hai, 
+  // isliye maine alag-alag icons hata kar content update kar diya hai.
   const features = [
-    { title: "More Experience", desc: "We offer a wide range of health services to meet all your needs.", icon: "fas fa-chart-line" },
-    { title: "Seamless care", desc: "We offer a wide range of health services to meet all your needs.", icon: "fas fa-hands-helping" },
-    { title: "The right answers?", desc: "We offer a wide range of health services to meet all your needs.", icon: "fas fa-question-circle" },
-    { title: "Unparalleled expertise", desc: "We offer a wide range of health services to meet all your needs.", icon: "fas fa-microscope" }
+    { 
+      title: "More Experience", 
+      desc: "We offer a wide range of health services to meet all your needs." 
+    },
+    { 
+      title: "Seamless care", 
+      desc: "We offer a wide range of health services to meet all your needs." 
+    },
+    { 
+      title: "The right answers?", 
+      desc: "We offer a wide range of health services to meet all your needs." 
+    },
+    { 
+      title: "Unparalleled expertise", 
+      desc: "We offer a wide range of health services to meet all your needs." 
+    }
   ];
+
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto text-center mb-8 sm:mb-12">
-        <span className="font-bold uppercase text-xs sm:text-sm">Why Choose Us</span>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-2 text-gray-900">Why Choose Us for Your <br />Healthcare Needs</h2>
-        <div className="w-16 sm:w-20 h-1 bg-emerald-500 mx-auto mt-3 sm:mt-4 rounded-full"></div>
-      </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 md:gap-7">
-        {features.map((f, i) => (
-          <div key={i} className="bg-white rounded-xl p-5 sm:p-7 text-center shadow-md hover:shadow-xl transition-all hover:-translate-y-1">
-            <div className="text-emerald-600 text-3xl sm:text-4xl mb-3 sm:mb-4"><i className={f.icon}></i></div>
-            <h4 className="text-lg sm:text-xl font-bold text-gray-800">{f.title}</h4>
-            <p className="text-gray-500 text-xs sm:text-sm mt-2 sm:mt-3">{f.desc}</p>
+    <section className="py-16 md:py-24 bg-white">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Column - Large Image */}
+          <div className="w-full h-[500px] lg:h-[700px]">
+            <img 
+              src="https://clinicmaster.dexignzone.com/tailwind/physiotherapy/images/about/img4.webp" 
+              alt="Therapist helping patient" 
+              className="w-full h-full object-cover rounded-[2rem] shadow-sm"
+              // Agar image fail ho jaye toh placeholder
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "https://via.placeholder.com/800x1000?text=Healthcare+Image";
+              }}
+            />
           </div>
-        ))}
+
+          {/* Right Column - Text & Feature Grid */}
+          <div>
+            <div className="mb-10 text-center lg:text-left">
+              <span className="text-blue-600 italic font-medium text-base md:text-lg block mb-3">
+                Why Choose Us
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-bold text-[#1f2937] leading-[1.2]">
+                Why Choose Us for Your <br className="hidden lg:block" /> Healthcare Needs
+              </h2>
+            </div>
+
+            {/* 2x2 Features Grid */}
+            <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
+              {features.map((f, i) => (
+                <div 
+                  key={i} 
+                  className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 text-center shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform duration-300"
+                >
+                  {/* Blue Checkmark Circle */}
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#1a56db] rounded-full flex items-center justify-center mx-auto mb-5 shadow-md">
+                    <svg 
+                      className="w-6 h-6 sm:w-7 sm:h-7 text-white" 
+                      fill="none" 
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor" 
+                      strokeWidth="2.5"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  
+                  <h4 className="text-[#1f2937] text-lg sm:text-[19px] font-medium mb-3">
+                    {f.title}
+                  </h4>
+                  <p className="text-gray-500 text-sm leading-relaxed px-2">
+                    {f.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </div>
       </div>
     </section>
   );
