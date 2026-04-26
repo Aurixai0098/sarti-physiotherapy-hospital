@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useRef } from 'react';
 
 // Hero images set for dynamic background
 const heroImageSet = [
@@ -271,7 +271,7 @@ const HeroSection = ({ currentImage, images, onSelectImage, onPrev, onNext }) =>
 const MedicalServicesSection = () => {
   const services = [
     {
-      title: "Medical Service", number: "01", desc: "It Is A Long Established Fact That A Reader Will Be Distracted By The Readable Content Of A Page.", svg: <svg width="70" height="70" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="5" width="90" height="90" rx="20" fill="#000000" /><circle cx="50" cy="50" r="18" fill="none" stroke="#FF0000" stroke-width="4" /><rect x="48" y="20" width="4" height="10" fill="#FF0000" /><rect x="48" y="70" width="4" height="10" fill="#FF0000" /><rect x="20" y="48" width="10" height="4" fill="#FF0000" /><rect x="70" y="48" width="10" height="4" fill="#FF0000" /><rect x="46" y="40" width="8" height="20" fill="#FFFFFF" rx="2" /><rect x="40" y="46" width="20" height="8" fill="#FFFFFF" rx="2" /></svg>
+      title: "Medical Service", number: "01", desc: "It Is A Long Established Fact That A Reader Will Be Distracted By The Readable Content Of A Page.", svg: <svg width="70" height="70" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="5" width="90" height="90" rx="20" fill="#000000" /><circle cx="50" cy="50" r="18" fill="none" stroke="#FF0000" strokeWidth="4" /><rect x="48" y="20" width="4" height="10" fill="#FF0000" /><rect x="48" y="70" width="4" height="10" fill="#FF0000" /><rect x="20" y="48" width="10" height="4" fill="#FF0000" /><rect x="70" y="48" width="10" height="4" fill="#FF0000" /><rect x="46" y="40" width="8" height="20" fill="#FFFFFF" rx="2" /><rect x="40" y="46" width="20" height="8" fill="#FFFFFF" rx="2" /></svg>
     },
     {
       title: "24/7 Medicines", number: "02", desc: "It Is A Long Established Fact That A Reader Will Be Distracted By The Readable Content Of A Page.", svg: <svg width="70" height="70" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -281,9 +281,9 @@ const MedicalServicesSection = () => {
         <polyline points="20,55 35,55 42,45 50,65 58,40 65,55 80,55"
           fill="none"
           stroke="#FFFFFF"
-          stroke-width="2"
-          stroke-linejoin="round"
-          stroke-linecap="round" />
+          strokeWidth="2"
+          strokeLinejoin="round"
+          strokeLinecap="round" />
       </svg>
     },
     {
@@ -291,8 +291,8 @@ const MedicalServicesSection = () => {
         <circle cx="50" cy="50" r="45" fill="#000000" />
         <circle cx="50" cy="35" r="12" fill="#FFFFFF" />
         <rect x="30" y="48" width="40" height="28" rx="8" fill="#FFFFFF" />
-        <line x1="50" y1="48" x2="50" y2="76" stroke="#000000" stroke-width="2" />
-        <path d="M38 55 C38 70, 62 70, 62 55" fill="none" stroke="#FF0000" stroke-width="2" />
+        <line x1="50" y1="48" x2="50" y2="76" stroke="#000000" strokeWidth="2" />
+        <path d="M38 55 C38 70, 62 70, 62 55" fill="none" stroke="#FF0000" strokeWidth="2" />
         <circle cx="62" cy="58" r="3" fill="#FF0000" />
         <rect x="46" y="58" width="8" height="16" fill="#FF0000" rx="1" />
         <rect x="42" y="62" width="16" height="8" fill="#FF0000" rx="1" />
@@ -435,29 +435,125 @@ const AboutUsExtended = () => {
 
 // ----- Physiotherapy Services -----
 const PhysioServices = () => {
+  const scrollContainerRef = useRef(null);
+
+  // Added image placeholders since the original code didn't have image URLs for this section
   const servicesList = [
-    { name: "Manual Therapy", desc: "Consectetur adipiscing.", num: "01" },
-    { name: "Acupuncture", desc: "Consectetur adipiscing.", num: "02" },
-    { name: "Pilates", desc: "Consectetur adipiscing.", num: "03" },
-    { name: "Lymphtic Drainage", desc: "Consectetur adipiscing.", num: "04" }
+    { 
+      name: "Manual Therapy", 
+      desc: "Consectetur adipiscing.", 
+      num: "01.",
+      img: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=600"
+    },
+    { 
+      name: "Acupuncture", 
+      desc: "Consectetur adipiscing.", 
+      num: "02.",
+      img: "https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&q=80&w=600"
+    },
+    { 
+      name: "Pilates", 
+      desc: "Consectetur adipiscing.", 
+      num: "03.",
+      img: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=600"
+    },
+    { 
+      name: "Lymphtic Drainage", 
+      desc: "Consectetur adipiscing.", 
+      num: "04.",
+      img: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=600"
+    },
+    { 
+      name: "Sports Therapy", 
+      desc: "Consectetur adipiscing.", 
+      num: "05.",
+      img: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=600"
+    },
+    { 
+      name: "Neurology Therapy", 
+      desc: "Consectetur adipiscing.", 
+      num: "06.",
+      img: "https://images.unsplash.com/photo-1588286840104-8957b019727f?auto=format&fit=crop&q=80&w=600"
+    }
   ];
+
+  // Auto-slide logic (Every 2 seconds)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (scrollContainerRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+        
+        // If we reach the end of the scroll, instantly jump back to start, otherwise scroll by 1 card
+        if (scrollLeft + clientWidth >= scrollWidth - 10) {
+          scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          // Find the width of one card + the gap (24px)
+          const cardWidth = scrollContainerRef.current.children[0].clientWidth;
+          scrollContainerRef.current.scrollBy({ left: cardWidth + 24, behavior: 'smooth' });
+        }
+      }
+    }, 2000);
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []);
+
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8 sm:mb-12">
-          <span className="font-semibold uppercase tracking-wider text-xs sm:text-sm">Services</span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-2 text-gray-900">Our Expert <br /><span className="text-emerald-600">Physiotherapy Services</span></h2>
-          <div className="w-16 sm:w-24 h-1 bg-emerald-500 mx-auto mt-4 sm:mt-5 rounded-full"></div>
+    <section className="py-16 md:py-24 bg-white overflow-hidden">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Header Section */}
+        <div className="text-center mb-12 sm:mb-16">
+          <span className="text-blue-600 italic font-medium text-lg block mb-3">
+            Services
+          </span>
+          <h2 className="text-4xl sm:text-5xl lg:text-[56px] font-bold text-[#333333] leading-[1.2]">
+            Our Expert <br className="hidden sm:block" /> 
+            Physiotherapy Services
+          </h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 md:gap-7">
-          {servicesList.map((srv) => (
-            <div key={srv.num} className="bg-gray-50 rounded-xl sm:rounded-2xl p-5 sm:p-7 shadow-md hover:shadow-xl transition-all border-l-4 border-emerald-500">
-              <div className="text-3xl sm:text-4xl font-black text-emerald-200">{srv.num}</div>
-              <h4 className="text-lg sm:text-xl font-bold mt-3 text-gray-800">{srv.name}</h4>
-              <p className="text-gray-500 mt-2 text-sm sm:text-base">{srv.desc}</p>
+
+        {/* Carousel / Slider Container */}
+        <div 
+          ref={scrollContainerRef}
+          className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-8 [&::-webkit-scrollbar]:hidden"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          {servicesList.map((srv, index) => (
+            <div 
+              key={index} 
+              className="relative min-w-[85vw] sm:min-w-[45vw] lg:min-w-[320px] xl:min-w-[350px] h-[450px] rounded-[2rem] overflow-hidden flex-shrink-0 snap-start group cursor-pointer"
+            >
+              {/* Background Image */}
+              <img 
+                src={srv.img} 
+                alt={srv.name} 
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              
+              {/* Dark Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/80 transition-opacity duration-300"></div>
+
+              {/* Card Content */}
+              <div className="absolute inset-0 p-8 flex flex-col justify-between">
+                {/* Top Number */}
+                <span className="text-white text-xl font-medium tracking-wide">
+                  {srv.num}
+                </span>
+
+                {/* Bottom Text */}
+                <div className="transform transition-transform duration-300 translate-y-2 group-hover:translate-y-0">
+                  <h4 className="text-white text-2xl sm:text-[28px] font-bold mb-2">
+                    {srv.name}
+                  </h4>
+                  <p className="text-gray-200 text-[15px]">
+                    {srv.desc}
+                  </p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
+        
       </div>
     </section>
   );
