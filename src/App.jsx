@@ -53,16 +53,16 @@ const Navbar = ({ isScrolled }) => {
             </div>
 
             {/* Desktop Navigation - Hidden on mobile */}
-            <div className="hidden md:flex items-center space-x-4 lg:space-x-7 bg-white p-2 md:p-3 rounded-full px-3 md:px-5 font-medium  ">
+            <div className="hidden md:flex items-center space-x-4 lg:space-x-7 bg-white p-2 md:p-1 rounded-full px-3 md:px-2 md:pr-4 font-medium  ">
               {['Home', 'Pages', 'Services', 'Blogs', 'Contact Us'].map(item => (
-                <a key={item} href="#" className={`${isScrolled ? 'text-gray-700 hover:text-emerald-600' : 'text-black hover:text-emerald-600'} transition text-sm lg:text-base whitespace-nowrap`}>
+                <a key={item} href="#" className={`${isScrolled ? 'text-gray-700 hover:text-emerald-600' : 'text-black hover:text-emerald-600'} transition text-sm lg:text-base whitespace-nowrap ${item === "Home" ? 'bg-green-400  rounded-full p-4 px-6 text-white':''}`  }>
                   {item}
                 </a>
               ))}
             </div>
 
             {/* Desktop Appointment Button */}
-            <button className={`hidden md:block ${isScrolled ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-emerald-500 hover:bg-emerald-600'} text-white px-4 lg:px-5 py-2 rounded-full text-sm font-semibold shadow-md transition whitespace-nowrap`}>
+            <button className={`hidden md:block ${isScrolled ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-emerald-500 hover:bg-emerald-600'} text-white px-4  lg:px-5 py-5 rounded-full text-sm font-semibold shadow-md transition whitespace-nowrap`}>
               Appointment
             </button>
 
@@ -105,12 +105,12 @@ const Navbar = ({ isScrolled }) => {
           </div>
 
           {/* Mobile Navigation Links */}
-          <div className="flex flex-col space-y-1">
+          <div className="flex flex-col space-y-1  ">
             {['Home', 'Pages', 'Services', 'Blogs', 'Contact Us'].map(item => (
               <a
                 key={item}
                 href="#"
-                className="text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 px-4 py-3 rounded-xl transition-all duration-200 text-base font-medium"
+                className="text-gray-700 hover:text-emerald-600  hover:bg-emerald-50 px-4 py-3 rounded-xl transition-all duration-200 text-base font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item}
