@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hero-transition {
+  transition: background-image 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.thumb-active {
+  border: 3px solid #10b981;
+  transform: scale(1.05);
+  box-shadow: 0 12px 22px -8px rgba(0,0,0,0.2);
+}
+
+.navbar-scrolled {
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.navbar-transparent {
+  background-color: transparent;
+  backdrop-filter: none;
+  transition: all 0.25s;
+}
