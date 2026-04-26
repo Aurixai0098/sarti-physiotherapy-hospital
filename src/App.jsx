@@ -21,11 +21,11 @@ const Navbar = ({ isScrolled }) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <i className={`fas fa-hand-holding-heart text-2xl ${isScrolled ? 'text-emerald-600' : 'text-white drop-shadow-md'}`}></i>
-            <span className={`font-extrabold text-2xl tracking-tight ${isScrolled ? 'text-gray-800' : 'text-white drop-shadow-md'}`}>
-              Clinic <span className="text-emerald-400">Master</span>
+            <span className={`font-extrabold text-5xl tracking-tight ${isScrolled ? 'text-gray-800' : 'text-white drop-shadow-md'}`}>
+            SARTI <span className="text-emerald-400">PHYSIOTHERAPY</span>
             </span>
           </div>
-          <div className="hidden md:flex items-center space-x-7  bg-white/96 p-3 rounded-full px-5  font-medium">
+          <div className="hidden md:flex items-center space-x-7  bg-white p-3 rounded-full px-5  font-medium">
             {['Home', 'Pages', 'Services', 'Blogs', 'Contact Us'].map(item => (
               <a key={item} href="#" className={`${isScrolled ? 'text-gray-700 hover:text-emerald-600' : 'text-black hover:text-emerald-200'} transition`}>{item}</a>
             ))}
@@ -77,8 +77,8 @@ const HeroSection = ({ currentImage, images, onSelectImage, onPrev, onNext }) =>
         backgroundRepeat: 'no-repeat'
       }}
     >
-      <div className="absolute left-6 md:left-12 bottom-8 md:bottom-12 text-white/30 font-black text-7xl md:text-9xl select-none pointer-events-none z-0">01</div>
-      <div className="absolute right-6 md:right-12 top-24 md:top-32 text-white/20 font-black text-7xl md:text-9xl select-none pointer-events-none z-0">08</div>
+      {/* <div className="absolute left-6 md:left-12 bottom-8 md:bottom-12 text-white/30 font-black text-7xl md:text-9xl select-none pointer-events-none z-0">01</div>
+      <div className="absolute right-6 md:right-12 top-24 md:top-32 text-white/20 font-black text-7xl md:text-9xl select-none pointer-events-none z-0">08</div> */}
       
       <div className="relative max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-32 z-10 w-full">
         <div className="max-w-2xl text-white">
@@ -124,7 +124,7 @@ const HeroSection = ({ currentImage, images, onSelectImage, onPrev, onNext }) =>
               <div 
                 key={currentThumbIndex + idx}
                 onClick={() => onSelectImage(img)}
-                className={`cursor-pointer rounded-xl overflow-hidden w-32 h-32 md:w-20 md:h-20 transition-all duration-200 hover:scale-105 hover:ring-2 hover:ring-emerald-400 ${
+                className={`cursor-pointer   overflow-hidden w-32 h-32 md:w-40 md:h-20 transition-all duration-200 hover:scale-95    ${
                   currentImage === img ? '  scale-105' : 'opacity-80 hover:opacity-100'
                 }`}
               >
