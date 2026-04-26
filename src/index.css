@@ -12,10 +12,12 @@
   box-shadow: 0 12px 22px -8px rgba(0,0,0,0.2);
 }
 
+
+/* Custom styles for responsive navbar */
 .navbar-scrolled {
   background-color: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(8px);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   border-bottom: 1px solid #f0f0f0;
 }
 
@@ -23,4 +25,13 @@
   background-color: transparent;
   backdrop-filter: none;
   transition: all 0.25s;
+}
+
+.hero-transition {
+  transition: background-image 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+/* Hide scrollbar on mobile menu open */
+body.menu-open {
+  overflow: hidden;
 }
