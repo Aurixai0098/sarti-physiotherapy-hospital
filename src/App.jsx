@@ -305,7 +305,7 @@ const MedicalServicesSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {services.map((service, idx) => (
-            <div key={idx} className="bg-gray-50 rounded-2xl hover:bg-green-400  hover:text-white sm:rounded-3xl p-6 sm:p-8 shadow-md hover:shadow-xl transition-all hover:-translate-y-1 border border-gray-100">
+            <div key={idx} className="bg-gray-50 rounded-2xl hover:bg-green-400  hover:text-white sm:rounded-3xl p-6 sm:p-8 shadow-md hover:shadow-xl transition-all hover:-translate-y-1 border border-gray-100 duration-300">
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold  ">{service.title}</h3>
               <div className=' w-full flex flex-row h-10 items-center gap-4'>
                 <hr className='w-full' /> {service.svg}
@@ -1111,13 +1111,9 @@ const Footer = () => {
           <div className="lg:col-span-4">
             <div className="flex items-center gap-3 mb-5">
               {/* Blue Cross Logo SVG */}
-              <svg className="w-10 h-10 text-[#1a56db]" viewBox="0 0 40 40" fill="currentColor">
-                <path d="M20 0C8.954 0 0 8.954 0 20s8.954 20 20 20 20-8.954 20-20S31.046 0 20 0zm8.3 22.5h-5.8v5.8c0 1.38-1.12 2.5-2.5 2.5s-2.5-1.12-2.5-2.5v-5.8H11.7c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5h5.8v-5.8c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5v5.8h5.8c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5z" />
-              </svg>
-              <div className="leading-tight">
-                <span className="text-[#1a56db] text-2xl font-bold block">Clinic</span>
-                <span className="text-gray-500 text-xl font-medium block">Master</span>
-              </div>
+                <span className={`font-extrabold text-3xl  'text-white drop-shadow-md`}>
+                SARTI <span className="text-emerald-400">PHYSIOTHERAPY</span>
+              </span>
             </div>
             
             <p className="text-gray-500 text-sm leading-relaxed mb-6 max-w-xs">
