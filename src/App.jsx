@@ -54,7 +54,7 @@ const Navbar = ({ isScrolled }) => {
 
             {/* Desktop Navigation - Hidden on mobile */}
             <div className="hidden md:flex items-center space-x-4 lg:space-x-7 bg-white p-2 md:p-1 rounded-full px-3 md:px-2 md:pr-4 font-medium  ">
-              {['Home', 'Pages', 'Services', 'Blogs', 'Contact Us'].map(item => (
+              {['Home', '', 'Services', '', 'Contact Us'].map(item => (
                 <a key={item} href="#" className={`${isScrolled ? 'text-gray-700 hover:text-emerald-600' : 'text-black hover:text-emerald-600'} transition text-sm lg:text-base whitespace-nowrap ${item === "Home" ? 'bg-green-400  rounded-full p-4 px-6 text-white' : ''}`}>
                   {item}
                 </a>
@@ -274,7 +274,7 @@ const MedicalServicesSection = () => {
       title: "Medical Service", number: "01", desc: "It Is A Long Established Fact That A Reader Will Be Distracted By The Readable Content Of A Page.", svg: <svg width="70" height="70" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="5" width="90" height="90" rx="20" fill="#000000" /><circle cx="50" cy="50" r="18" fill="none" stroke="#FF0000" strokeWidth="4" /><rect x="48" y="20" width="4" height="10" fill="#FF0000" /><rect x="48" y="70" width="4" height="10" fill="#FF0000" /><rect x="20" y="48" width="10" height="4" fill="#FF0000" /><rect x="70" y="48" width="10" height="4" fill="#FF0000" /><rect x="46" y="40" width="8" height="20" fill="#FFFFFF" rx="2" /><rect x="40" y="46" width="20" height="8" fill="#FFFFFF" rx="2" /></svg>
     },
     {
-      title: "24/7 Medicines", number: "02", desc: "It Is A Long Established Fact That A Reader Will Be Distracted By The Readable Content Of A Page.", svg: <svg width="70" height="70" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      title: "PHYSIOTHERAPY", number: "02", desc: "It Is A Long Established Fact That A Reader Will Be Distracted By The Readable Content Of A Page.", svg: <svg width="70" height="70" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         <circle cx="50" cy="50" r="45" fill="#000000" />
         <rect x="43" y="25" width="14" height="50" fill="#FF0000" rx="3" />
         <rect x="25" y="43" width="50" height="14" fill="#FF0000" rx="3" />
@@ -834,34 +834,325 @@ const WhyChooseUsSection = () => {
   );
 };
 
-// ----- Meet Doctors -----
-const MeetDoctors = () => (
-  <section className="py-12 sm:py-16 md:py-20 bg-white">
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center mb-8 sm:mb-10">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Meet Our Expert Doctors</h2>
-    </div>
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-8 md:gap-12 bg-gray-50 rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-md items-center">
-      <div className="flex justify-center">
-        <div className="bg-emerald-100 rounded-full p-6 sm:p-8 md:p-10 w-40 h-40 sm:w-48 sm:h-48 md:w-60 md:h-60 flex items-center justify-center">
-          <i className="fas fa-user-md text-emerald-700 text-4xl sm:text-5xl md:text-6xl"></i>
+// ----- Meet Doctors (REPLACED with DoctorSection from second file) -----
+const DoctorSection = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [showQR, setShowQR] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    age: "",
+    gender: "",
+    address: "",
+    hospital: "",
+    homeVisit: false,
+    services: [],
+    date: "",
+    time: "",
+    paymentMethod: "offline", // "offline" or "online"
+  });
+
+  // List of physiotherapy services (based on doctor's expertise)
+  const serviceOptions = [
+    "Neurological Rehabilitation",
+    "Manual Therapy (COMT)",
+    "MET (Muscle Energy Technique)",
+    "MFR (Myofascial Release)",
+    "PNF (Proprioceptive Neuromuscular Facilitation)",
+    "Sports Taping",
+    "Voodoo Flossing",
+    "Osteopathy (UK)",
+    "Trigger Point Therapy",
+    "Dry Needling",
+    "Cupping Therapy",
+    "Post-surgical Rehab",
+    "Sports Injury Management",
+  ];
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
+  const handleServiceChange = (service) => {
+    setFormData((prev) => ({
+      ...prev,
+      services: prev.services.includes(service)
+        ? prev.services.filter((s) => s !== service)
+        : [...prev.services, service],
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.paymentMethod === "offline") {
+      // Send details to doctor's WhatsApp
+      sendWhatsAppMessage();
+    } else {
+      // Show QR code for online payment
+      setShowQR(true);
+    }
+  };
+
+  const sendWhatsAppMessage = () => {
+    const doctorNumber = "919672569151"; // Replace with actual doctor's WhatsApp number (with country code, no '+')
+    const message = `New Appointment Request%0A%0A*Patient Details*%0AName: ${formData.name}%0AAge: ${formData.age}%0AGender: ${formData.gender}%0AAddress: ${formData.address}%0AHospital: ${formData.hospital}%0AHome Visit: ${formData.homeVisit ? "Yes" : "No"}%0A%0A*Services Requested*%0A${formData.services.join(", ")}%0A%0A*Appointment Time*%0ADate: ${formData.date}%0ATime: ${formData.time}%0A%0APayment Method: Offline (at clinic/home)`;
+    const url = `https://wa.me/${doctorNumber}?text=${message}`;
+    window.open(url, "_blank");
+    // Reset and close modal
+    setShowModal(false);
+    resetForm();
+  };
+
+  const resetForm = () => {
+    setFormData({
+      name: "",
+      age: "",
+      gender: "",
+      address: "",
+      hospital: "",
+      homeVisit: false,
+      services: [],
+      date: "",
+      time: "",
+      paymentMethod: "offline",
+    });
+    setShowQR(false);
+  };
+
+  return (
+    <section className="py-12 sm:py-16 md:py-20 bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center mb-8 sm:mb-10">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Meet Our Expert Doctors</h2>
+      </div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-8 md:gap-12 bg-gray-50 rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-md items-center">
+        <div className="flex justify-center">
+          <div className="bg-emerald-100 rounded-full p-1 w-40 h-40 sm:w-48 sm:h-48 md:w-60 md:h-60 flex items-center justify-center overflow-hidden">
+            <img
+              src="https://res.cloudinary.com/djtvxmttf/image/upload/v1780554651/a7753008-a126-4b1a-96f3-de961a2bb51a.png"
+              alt="Dr. Anil Dhankar"
+              className="w-full h-full object-cover rounded-full"
+            />
+          </div>
+        </div>
+        <div className="text-center md:text-left">
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Dr. Anil Dhankar</h3>
+          <p className="text-emerald-600 font-medium text-sm sm:text-base">Physiotherapist</p>
+          <p className="text-gray-600 mt-3 sm:mt-4 text-sm sm:text-base whitespace-pre-line">
+            BPT, MPT (Neurology)
+            Federation of Indian Manual Therapist
+            COMT, C/MET, C/MFR, C/PNF, C/SPORTS TAPPING
+            C/VOODOO FLOSSING TECHNIQUES
+            D- OSTEOPATHY (U.K)
+            D- TRIGGER POINT THERAPY
+          </p>
+          <div className="flex justify-center md:justify-start gap-4 mt-4 sm:mt-6 text-gray-600 text-lg sm:text-xl">
+            <i className="fab fa-linkedin-in hover:text-emerald-600 cursor-pointer"></i>
+            <i className="fab fa-twitter hover:text-emerald-600 cursor-pointer"></i>
+            <i className="fab fa-facebook-f hover:text-emerald-600 cursor-pointer"></i>
+          </div>
+          <button
+            onClick={() => setShowModal(true)}
+            className="mt-4 sm:mt-6 bg-emerald-400 text-white px-5 sm:px-6 py-2 rounded-full shadow text-sm sm:text-base hover:bg-emerald-500 transition"
+          >
+            Appointment
+          </button>
         </div>
       </div>
-      <div className="text-center md:text-left">
-        <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Dr. Rachel Moore</h3>
-        <p className="text-emerald-600 font-medium text-sm sm:text-base">Physiotherapist</p>
-        <p className="text-gray-600 mt-3 sm:mt-4 text-sm sm:text-base">Our expert physiotherapists are dedicated to restoring your movement, relieving pain, and improving overall physical health. They provide personalized care and advanced therapies.</p>
-        <div className="flex justify-center md:justify-start gap-4 mt-4 sm:mt-6 text-gray-600 text-lg sm:text-xl">
-          <i className="fab fa-linkedin-in hover:text-emerald-600 cursor-pointer"></i>
-          <i className="fab fa-twitter hover:text-emerald-600 cursor-pointer"></i>
-          <i className="fab fa-facebook-f hover:text-emerald-600 cursor-pointer"></i>
+
+      {/* Appointment Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4 overflow-y-auto">
+          <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-xl relative">
+            <button
+              onClick={() => {
+                setShowModal(false);
+                resetForm();
+              }}
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl"
+            >
+              &times;
+            </button>
+            <h3 className="text-2xl font-bold mb-4 text-center">Book Appointment</h3>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Full Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                />
+                <input
+                  type="number"
+                  name="age"
+                  placeholder="Age"
+                  value={formData.age}
+                  onChange={handleChange}
+                  required
+                  className="border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                />
+                <select
+                  name="gender"
+                  value={formData.gender}
+                  onChange={handleChange}
+                  required
+                  className="border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                >
+                  <option value="">Select Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+                <input
+                  type="text"
+                  name="hospital"
+                  placeholder="Hospital/Clinic Name (if any)"
+                  value={formData.hospital}
+                  onChange={handleChange}
+                  className="border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                />
+              </div>
+              <textarea
+                name="address"
+                placeholder="Full Address"
+                value={formData.address}
+                onChange={handleChange}
+                required
+                rows="2"
+                className="border rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-emerald-400"
+              />
+              <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  name="homeVisit"
+                  checked={formData.homeVisit}
+                  onChange={handleChange}
+                  id="homeVisit"
+                />
+                <label htmlFor="homeVisit">I want the doctor to come to my home</label>
+              </div>
+
+              <div>
+                <label className="block font-medium mb-2">Select Services (multiple)</label>
+                <div className="grid grid-cols-2 gap-2 max-h-40 overflow-y-auto border rounded-lg p-2">
+                  {serviceOptions.map((service) => (
+                    <label key={service} className="flex items-center gap-2 text-sm">
+                      <input
+                        type="checkbox"
+                        checked={formData.services.includes(service)}
+                        onChange={() => handleServiceChange(service)}
+                      />
+                      {service}
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input
+                  type="date"
+                  name="date"
+                  value={formData.date}
+                  onChange={handleChange}
+                  required
+                  className="border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                />
+                <input
+                  type="time"
+                  name="time"
+                  value={formData.time}
+                  onChange={handleChange}
+                  required
+                  className="border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                />
+              </div>
+
+              <div>
+                <label className="block font-medium mb-2">Payment Method</label>
+                <div className="flex gap-4">
+                  <label className="flex items-center gap-2">
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="offline"
+                      checked={formData.paymentMethod === "offline"}
+                      onChange={handleChange}
+                    />
+                    Offline (Cash / Card at clinic or home)
+                  </label>
+                  <label className="flex items-center gap-2">
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="online"
+                      checked={formData.paymentMethod === "online"}
+                      onChange={handleChange}
+                    />
+                    Online (UPI / QR)
+                  </label>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-emerald-500 text-white py-2 rounded-full hover:bg-emerald-600 transition font-semibold"
+              >
+                {formData.paymentMethod === "offline" ? "Submit & Send to WhatsApp" : "Proceed to Payment"}
+              </button>
+            </form>
+          </div>
         </div>
-        <button className="mt-4 sm:mt-6 bg-emerald-400 text-white px-5 sm:px-6 py-2 rounded-full shadow text-sm sm:text-base">Appointment</button>
-      </div>
-    </div>
-  </section>
-);
+      )}
 
-
+      {/* QR Code Modal for Online Payment */}
+      {showQR && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
+          <div className="bg-white rounded-2xl max-w-md w-full p-6 text-center relative">
+            <button
+              onClick={() => {
+                setShowQR(false);
+                setShowModal(false);
+                resetForm();
+              }}
+              className="absolute top-2 right-3 text-gray-500 hover:text-gray-800 text-2xl"
+            >
+              &times;
+            </button>
+            <h3 className="text-xl font-bold mb-3">Scan to Pay Online</h3>
+            <div className="flex justify-center mb-4">
+              {/* Replace with actual hospital QR code image URL */}
+              <img
+                src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=hospital@upi&pn=City%20Hospital&am=500&cu=INR"
+                alt="Hospital Payment QR Code"
+                className="w-48 h-48"
+              />
+            </div>
+            <p className="text-gray-600 text-sm">
+              Scan this QR code with any UPI app (Google Pay, PhonePe, Paytm) to pay the consultation fee.
+              <br />
+              After successful payment, our team will confirm your appointment.
+            </p>
+            <button
+              onClick={() => {
+                setShowQR(false);
+                setShowModal(false);
+                resetForm();
+              }}
+              className="mt-4 bg-emerald-500 text-white px-5 py-2 rounded-full"
+            >
+              Done
+            </button>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+};
 
 // ----- Conditions We Treat -----
 const ConditionsTreat = () => {
@@ -1265,8 +1556,9 @@ const App = () => {
       <AboutUsExtended />
       <PhysioServices />
       <ServiceBanner />
+      <TestimonialsSection />
       <WhyChooseUsSection />
-      <MeetDoctors />
+      <DoctorSection />  {/* REPLACED: was <MeetDoctors /> */}
       <ConditionsTreat />
       <BlogSection />
       <MuscleSpasmCta />
